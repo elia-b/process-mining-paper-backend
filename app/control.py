@@ -13,13 +13,14 @@ class Control():
                             "throughPut": filter_class.ThroughPut, "removeBehavior": filter_class.RemoveBehavior}
 
     def loadRawfile(self, json):
-        print(json)
+        print("New Load")
+        self.currentEventLog = event_log.EventLog()  # Maybe this is not needed
+        self.graph = None
         self.currentEventLog.populateTracesFromCSV(
             json["content"]["data"], json["timestampformat"], json["timestampcolumn"], json["activitycolumn"], json["tracecolumn"])
         self.graph = logs_graph.Graph(self.currentEventLog,json["truedatagraph"])
 
         self.graph.logdetails = json
-        print(self.currentEventLog)
 
     def parse_parameters(self, parameters_string):
         print(parameters_string)

@@ -21,7 +21,6 @@ def home():
 
 @app.route("/import_raw_data", methods=['POST'])
 def import_raw_data():
-    control = Control()
     file = request.get_json()
     control.loadRawfile(file)
 
